@@ -116,6 +116,14 @@
         upgrade_to_1080: false,
         offset: 0,
         chunkSize: 0,
+
+        // privacy defaults
+        privacyadd: true,
+        privacycomments: 'anybody',
+        privacydownload: true,
+        privacyembed: 'private',
+        privacyview: 'anybody',
+
         retryHandler: new RetryHandler(),
         onComplete: function() {},
         onProgress: function() {},
@@ -161,7 +169,15 @@
         this.videoData = {
             name: (opts.name > '') ? opts.name : defaults.name,
             description: (opts.description > '') ? opts.description : defaults.description,
-            'privacy.view': opts.private ? 'nobody' : 'anybody'
+            
+            // privacy params
+            // 'privacy.view': opts.private ? 'nobody' : 'anybody',
+            'privacy.add': opts.privacyadd ? opts.privacyadd : true,
+            'privacy.comments': (opts.privacycomments > '') ? opts.privacycomments : defaults.privacycomments,
+            'privacy.download': opts.privacydownload ? opts.privacydownload : defaults.privacydownload,
+            'privacy.embed': (opts.privacyembed > '') ? opts.privacyembed : defaults.privacyembed,
+            'privacy.view': (opts.privacyview > '') ? opts.privacyview : defaults.privacyview,
+            password: (opts.password > '') ? opts.password : '',
         }
 
         if (!(this.url = opts.url)) {
